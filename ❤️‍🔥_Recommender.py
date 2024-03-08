@@ -113,7 +113,7 @@ def run():
 
             with col2:  
                 st.caption("Your list")
-                st.table(pd.Series(st.session_state["watchlist"].rec_list, name="Course Name"))
+                st.table(pd.Series(st.session_state["watchlist"].rec_list, name="Course Name", dtype='object'))
 
                 movie_to_remove = st.selectbox(
                     "Select a movie to drop", st.session_state["watchlist"].rec_list
@@ -123,15 +123,18 @@ def run():
                     on_click=st.session_state["watchlist"].remove,
                     args=[(movie_to_remove)], )
                 st.subheader("Here is you recommendation")
-                try:
-                    with st.spinner('Wait for it...'):
-                        recommended_courses = cbf_recommend(st.session_state["watchlist"].rec_list,
-                                                        rating_info_subset=rating_info_subset,
-                                                        lasso_model=lasso_model,
-                                                        num_recommendations=top_k)
-                        print_rec(top_k=top_k, df=recommended_courses)
-                except:
-                    st.info(r'(；′⌒`) Sorry cannot find any recommendations for this course, please re-select others')
+                if len(st.session_state["watchlist"].rec_list) == 0:
+                    st.error("Please select a courses for recommendation")
+                else:
+                    try:
+                        with st.spinner('Wait for it...'):
+                            recommended_courses = cbf_recommend(st.session_state["watchlist"].rec_list,
+                                                            rating_info_subset=rating_info_subset,
+                                                            lasso_model=lasso_model,
+                                                            num_recommendations=top_k)
+                            print_rec(top_k=top_k, df=recommended_courses)
+                    except:
+                        st.info(r'(；′⌒`) Sorry cannot find any recommendations for this course, please re-select others')
                 # recommended_courses = weighted_hybrid_recommend([st.session_state["watchlist"].rec_list], 
                 #                                             predictions_knn=predictions_knn, 
                 #                                             predictions_lasso=predictions_lasso,
