@@ -1,4 +1,3 @@
-import pandas as pd
 import streamlit as st
 from constants import *
 def get_categories():
@@ -79,33 +78,16 @@ def print_hybrid(df):
         for i in range(len(df)):
             
             rec_id = df.iloc[i]['item_id']
-            rec_link = id_to_link.get(rec_id, 'Link not found')
             rec_img = id_to_img.get(rec_id, "Image not found")
 
             rec_title = df.iloc[i]["item_name"]
-            rec_avg_rating = df.iloc[i]["item_avg_rating"]
-            rec_category = df.iloc[i]["item_category"]
+
             with st.container():
             
                 col = columns[i % len(columns)]
                 col.text(str(rec_title))
-                # col.markdown(f'<p style = "font-size: 13px; font-weight:bold;">{rec_title}</p>', unsafe_allow_html=True)
                 col.image(rec_img)
-            # try:
-            #     img_src = (
-            #         "Posters/" + str(df.index[movie]) + ".jpg"
-            #     )  ## get movie poster by movie ID
-            # except:
-            #     img_src = "Posters/unavailable.png"  ## get default image if movie poster not in folder
 
-            # img_html = self.get_img_with_href(
-            #     img_src,
-            #     rec_title,
-            #     movie_link,
-            # )
-            # col.markdown(img_html, unsafe_allow_html=True)
-
-            ## ADD/REMOVE OPTIONS FOR WATCHLIST #####################################
             if (rec_title) not in st.session_state["watchlist"].rec_list:
                 add_movie = col.button(
                     "Add to watchlist",

@@ -1,5 +1,4 @@
 import pandas as pd
-
 top_k = 10
 df_info = pd.read_csv('Data/courses_list.csv')
 df_courses = pd.read_csv('Data/courses_processed.csv', index_col=0)

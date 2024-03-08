@@ -39,7 +39,6 @@ def run():
     if "watchlist" not in st.session_state:
         st.session_state["watchlist"] = Wishlist()
 
-    
     with st.sidebar:
         st.caption("How would you like to get recommendations?")
         rec_option = option_menu(
@@ -103,44 +102,45 @@ def run():
                         st.write("Can't find any recommendations for you")                        
 
         case "Hybrid Model":
-            rating_info_subset = load_data()
-            # predictions_knn = load_knn()
-            lasso_model = load_lasso()
-            col1, col2 = st.columns(2,gap='medium')
-            with col1:
-                st.subheader("Select courses that you maybe interested in")
-                print_hybrid(df=df_courses[:60])
+            st.info('''Since Streamlit has been investigating the memory leaks issues of large data file deployment, this site is temporarily locked by the authors. For demonstration, please contact us via email at anhndm21416c@st.uel.edu.vn. You will receive a video of the demo or the source code along with instructions for running it locally. Thank you for visiting''')
+            # rating_info_subset = load_data()
+            # # predictions_knn = load_knn()
+            # lasso_model = load_lasso()
+            # col1, col2 = st.columns(2,gap='medium')
+            # with col1:
+            #     st.subheader("Select courses that you maybe interested in")
+            #     print_hybrid(df=df_courses[:60])
 
-            with col2:  
-                st.caption("Your list")
-                st.table(pd.Series(st.session_state["watchlist"].rec_list, name="Course Name", dtype='object'))
+            # with col2:  
+            #     st.caption("Your list")
+            #     st.table(pd.Series(st.session_state["watchlist"].rec_list, name="Course Name", dtype='object'))
 
-                movie_to_remove = st.selectbox(
-                    "Select a movie to drop", st.session_state["watchlist"].rec_list
-                    )
-                remove_movie = st.button(
-                    "Drop",
-                    on_click=st.session_state["watchlist"].remove,
-                    args=[(movie_to_remove)], )
-                st.subheader("Here is you recommendation")
-                if len(st.session_state["watchlist"].rec_list) == 0:
-                    st.error("Please select a courses for recommendation")
-                else:
-                    try:
-                        with st.spinner('Wait for it...'):
-                            recommended_courses = cbf_recommend(st.session_state["watchlist"].rec_list,
-                                                            rating_info_subset=rating_info_subset,
-                                                            lasso_model=lasso_model,
-                                                            num_recommendations=top_k)
-                            print_rec(top_k=top_k, df=recommended_courses)
-                    except:
-                        st.info(r'(；′⌒`) Sorry cannot find any recommendations for this course, please re-select others')
-                # recommended_courses = weighted_hybrid_recommend([st.session_state["watchlist"].rec_list], 
-                #                                             predictions_knn=predictions_knn, 
-                #                                             predictions_lasso=predictions_lasso,
-                #                                             rating_info_subset=rating_info_subset,
-                #                                             num_recommendations=top_k, cf_weight=0.15, cbf_weight=0.85)
-                # st.write(recommended_courses)
+            #     movie_to_remove = st.selectbox(
+            #         "Select a movie to drop", st.session_state["watchlist"].rec_list
+            #         )
+            #     remove_movie = st.button(
+            #         "Drop",
+            #         on_click=st.session_state["watchlist"].remove,
+            #         args=[(movie_to_remove)], )
+            #     st.subheader("Here is you recommendation")
+            #     if len(st.session_state["watchlist"].rec_list) == 0:
+            #         st.error("Please select a courses for recommendation")
+            #     else:
+            #         try:
+            #             with st.spinner('Wait for it...'):
+            #                 recommended_courses = cbf_recommend(st.session_state["watchlist"].rec_list,
+            #                                                 rating_info_subset=rating_info_subset,
+            #                                                 lasso_model=lasso_model,
+            #                                                 num_recommendations=top_k)
+            #                 print_rec(top_k=top_k, df=recommended_courses)
+            #         except:
+            #             st.info(r'(；′⌒`) Sorry cannot find any recommendations for this course, please re-select others')
+            #     # recommended_courses = weighted_hybrid_recommend([st.session_state["watchlist"].rec_list], 
+            #     #                                             predictions_knn=predictions_knn, 
+            #     #                                             predictions_lasso=predictions_lasso,
+            #     #                                             rating_info_subset=rating_info_subset,
+            #     #                                             num_recommendations=top_k, cf_weight=0.15, cbf_weight=0.85)
+            #     # st.write(recommended_courses)
 
 
         case "Prompt":

@@ -17,7 +17,6 @@ df_show_info = pd.read_csv('Data/courses_list.csv',nrows=50, index_col=0)
 df_show_courses = pd.read_csv('Data/courses.csv',nrows=50, index_col=0)
 df_show_ratings = pd.read_csv("Data/ratings.csv",nrows=50)
 
-
 tab_ratings, tab_courses, tab_info, tab_dist = st.tabs(["ratings","courses list", "courses info", "Visualization"])
 with tab_ratings:
     st.write('ratings datasets: 8,375 rows')
