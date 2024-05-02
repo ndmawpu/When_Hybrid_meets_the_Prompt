@@ -1,53 +1,10 @@
 # WhenHybridMeetsThePrompt
-Project Idea
-![image](https://github.com/ndmawpu/When-Hybrid-meets-the-Prompt/assets/92135945/cf6135cd-420c-4f9b-9d1c-7ebe81fb6f17)
+Project Reseach Process
+![image](https://github.com/ndmawpu/When_Hybrid_meets_the_Prompt/assets/92135945/ca812232-bb76-443f-9af0-9bd5ee0481db)
 
-```
-Project Structure
-│   main.py
-│   README.md
-│   requirements.txt
-│   
-├───Android
-├───Assets
-│       courses_embeddings.pkl
-│       
-├───Data
-│   │   courses.csv
-│   │   DataPreprocessing.ipynb
-│   │   ratings.csv
-│   │
-│   ├───coursera
-│   │       Coursera.csv
-│   │       Coursera_courses.csv
-│   │       Coursera_reviews.csv
-│   │
-│   └───udemy
-│           udemy_courses.csv
-│           udemy_courses.json
-│           udemy_reviews.csv
-│           udemy_reviews.json
-│
-├───Model
-│   │   ultils.py
-│   │
-│   ├───Hybrid
-│   │   │   Rec_Filtering.py
-│   │   │   Rec_Hybrid.py
-│   │   │
-│   │   └───__pycache__
-│   │           Rec_Filtering.cpython-311.pyc
-│   │
-│   ├───Prompt
-│   │   │   prompt.py
-│   │   │
-│   │   └───__pycache__
-│   │           prompt.cpython-311.pyc
-│   │
-│   └───__pycache__
-│           ultils.cpython-311.pyc
-│
-└───Test
-        Rec_Filtering.ipynb
-        Rec_Hybrid.ipynb
-```
+Hybrid Model
+![image](https://github.com/ndmawpu/When_Hybrid_meets_the_Prompt/assets/92135945/94b29da9-05ef-4161-b038-7a7846d50016)
+
+Three-stage LLMs-based Model
+![image](https://github.com/ndmawpu/When_Hybrid_meets_the_Prompt/assets/92135945/7123f024-dfaa-4de9-bc0b-99a03c02b922)
+
